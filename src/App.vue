@@ -44,29 +44,32 @@
         </b-list-group>
 
         <div class="text-center">
-          <b-button variant="primary" size="sm" v-on:click="shoutout_count += 1">
-            <h5>Click here to give us a shoutout (or two 😉) <b-badge variant="bold"> {{ shoutout_count }}</b-badge></h5>
+          <b-button variant="primary" size="sm" v-on:click="shoutout">
+            <h5>Click here to give us a shoutout (or two 😉) <b-badge variant="bold"> {{ count }}</b-badge></h5>
           </b-button>
         </div>
       </div>
   
-    
   </div>
 </template>
 
 <script>
+
 import serve from './components/serve.vue'
 import name from './components/name.vue'
+import store from './store.js'
+import { mapState } from 'vuex'
 
 export default {
   name: 'App',
+  store,
   components: {
     serve, name
   },
   data() {
     return {
       component: 'serve',
-      shoutout_count: 0,
+      count: 0,
       items: [
         { message: 'Burnt Coffee' },
         { message: 'Capuccino' },
@@ -85,8 +88,16 @@ export default {
       else {
         this.component = serve;
       }
+    },
+  },
+
+ computed: mapState ({
+   count: state => state.count,
+   shoutout(state) {
+      return this.count++
     }
-  }
+ })
+  
 }
 </script>
 
