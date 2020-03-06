@@ -44,17 +44,17 @@
         </b-list-group>
 
         <div class="text-center">
-          <b-button variant="primary" size="sm" v-on:click="shoutout_count += 1">
-            <h5>Click here to give us a shoutout (or two 😉) <b-badge variant="bold"> {{ shoutout_count }}</b-badge></h5>
+          <b-button variant="primary" size="sm" v-on:click="shoutout">
+            <h5>Click here to give us a shoutout (or two 😉) <b-badge variant="bold"> {{ count }}</b-badge></h5>
           </b-button>
         </div>
       </div>
   
-    
   </div>
 </template>
 
 <script>
+
 import serve from './components/serve.vue'
 import name from './components/name.vue'
 
@@ -66,7 +66,6 @@ export default {
   data() {
     return {
       component: 'serve',
-      shoutout_count: 0,
       items: [
         { message: 'Burnt Coffee' },
         { message: 'Capuccino' },
@@ -78,6 +77,9 @@ export default {
   },
 
   methods: {
+    increment() {
+      this.$store.commit.increment
+    },
     toggle() {
       if(this.component === serve) {
         this.component = name;
@@ -85,8 +87,15 @@ export default {
       else {
         this.component = serve;
       }
+    },
+  },
+
+ computed: {
+    count() {
+      return this.$store.state.count
     }
-  }
+ }
+  
 }
 </script>
 
