@@ -11,6 +11,9 @@ const store = new Vuex.Store({
         increment (state) {
             return state.count++
         }
+    },
+    getters: {
+        count: state => state.count
     }
 });
 

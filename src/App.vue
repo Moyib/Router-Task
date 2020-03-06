@@ -57,19 +57,15 @@
 
 import serve from './components/serve.vue'
 import name from './components/name.vue'
-import store from './store.js'
-import { mapState } from 'vuex'
 
 export default {
   name: 'App',
-  store,
   components: {
     serve, name
   },
   data() {
     return {
       component: 'serve',
-      count: 0,
       items: [
         { message: 'Burnt Coffee' },
         { message: 'Capuccino' },
@@ -81,6 +77,9 @@ export default {
   },
 
   methods: {
+    increment() {
+      this.$store.commit.increment
+    },
     toggle() {
       if(this.component === serve) {
         this.component = name;
@@ -91,12 +90,11 @@ export default {
     },
   },
 
- computed: mapState ({
-   count: state => state.count,
-   shoutout(state) {
-      return this.count++
+ computed: {
+    count() {
+      return this.$store.state.count
     }
- })
+ }
   
 }
 </script>
