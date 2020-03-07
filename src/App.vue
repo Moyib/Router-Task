@@ -44,7 +44,7 @@
         </b-list-group>
 
         <div class="text-center">
-          <b-button variant="primary" size="sm" v-on:click="shoutout">
+          <b-button variant="primary" size="sm" @click="shoutOut">
             <h5>Click here to give us a shoutout (or two 😉) <b-badge variant="bold"> {{ count }}</b-badge></h5>
           </b-button>
         </div>
@@ -77,8 +77,8 @@ export default {
   },
 
   methods: {
-    increment() {
-      this.$store.commit.increment
+    shoutOut() {
+      this.$store.commit('increment')
     },
     toggle() {
       if(this.component === serve) {
