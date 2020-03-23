@@ -80,10 +80,11 @@ export default {
     shoutOut() {
       this.$store.commit('increment')
     },
-    toggle: function () {
-      if (this.component === serve) {
+    toggle() {
+      if(this.component === serve) {
         this.component = name;
-      } else {
+      }
+      else {
         this.component = serve;
       }
     },
