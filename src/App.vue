@@ -54,9 +54,9 @@
 </template>
 
 <script>
-
 import serve from './components/serve.vue'
 import name from './components/name.vue'
+import 'bootstrap/dist/js/bootstrap.bundle'
 
 export default {
   name: 'App',
@@ -75,21 +75,18 @@ export default {
       ]
     }
   },
-
   methods: {
     shoutOut() {
       this.$store.commit('increment')
     },
-    toggle() {
-      if(this.component === serve) {
+    toggle: function () {
+      if (this.component === serve) {
         this.component = name;
-      }
-      else {
+      } else {
         this.component = serve;
       }
     },
   },
-
  computed: {
     count() {
       return this.$store.state.count

@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <h4>Coffee first. Schemes later.</h4>
+    <p>Welcome here</p>
     <div class="row">
       <div class="col-md-4 col-lg4" v-for="(data, index) in products" :key="index">
         <img :src="data.image" class="img-fluid">
